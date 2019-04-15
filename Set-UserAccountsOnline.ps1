@@ -69,6 +69,7 @@ $sta = @($st)
     {
         if($p.Value -eq [string]::Empty)
         {
+            Write-Verbose "Replacing empty Property $($p.Name) value with null"
             $p.Value = $null
         }
     }
@@ -77,7 +78,6 @@ $sta = @($st)
     $DisplayName = $UserCSV.GivenName + ' ' + $UserCSV.Surname
     
   
-    
     $user = Get-AzureADUser -Filter "userPrincipalName eq '$UPN'"
     if(!$user){
       Write-Information -MessageData:"Creating user details $DisplayName"
@@ -103,8 +103,6 @@ $sta = @($st)
     }
     else
     {
-     #Replace values that are empty with $null
-
      Write-Information -MessageData:"Updating user details $DisplayName"
      #Update user
      Set-AzureADUser -ObjectId $user.ObjectId `
