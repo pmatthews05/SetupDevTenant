@@ -61,12 +61,22 @@ $sta = @($st)
 
 
 
-@($(Import-csv -path:$Path)).ForEach({
+@($(Import-csv -path:'.\AzureADUsers.csv') | ForEach-Object{
     $UserCSV = $PSItem
+
+    #Changes "" values to $null
+    foreach($p in $UserCSV.PSObject.Properties)
+    {
+        if($p.Value -eq [string]::Empty)
+        {
+            $p.Value = $null
+        }
+    }
+
     $UPN = $UserCSV.UserPrincipalName + '@' + $TenantDomain
     $DisplayName = $UserCSV.GivenName + ' ' + $UserCSV.Surname
     
-    #Replace values that are empty with $null
+  
     
     $user = Get-AzureADUser -Filter "userPrincipalName eq '$UPN'"
     if(!$user){
