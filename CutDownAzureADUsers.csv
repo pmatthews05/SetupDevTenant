@@ -1,0 +1,6 @@
+MFAEnabled,License,UserPrincipalName,AccountEnabled,GivenName,Surname,MailNickName,Manager,JobTitle,Department,Mobile,Telephone,Office,StreetAddress,City,Country,State,PostCode,UsageLocation,ShowInAddressList
+TRUE,DEVELOPERPACK,pmatthews.admin,TRUE,Paul,Matthews,PMatthews.Admin,,Director,IT,07213 204445,0207 762 1242 Ext 4445,London,9934 Highway Road,London,England,,EC3 1VO,GB,TRUE
+TRUE,DEVELOPERPACK,Dan.Jump,TRUE,Dan,Jump,Dan.Jump,Paul Matthews,CEO,Executive,07532 362222,01923 367 8362 Ext 2222,Watford,67 Manor Road,Watford,England,,WD32 5WF,GB,TRUE
+TRUE,DEVELOPERPACK,Adam.Barr,TRUE,Adam,Barr,Adam.Barr,Dan Jump,General Manager of Professional Services,Operations,07996 401111,029 2048 6384 Ext 1111,Cardiff,Forgeside Close,Cardiff,Wales,,CF24 5FA,GB,TRUE
+TRUE,DEVELOPERPACK,Alan.Steiner,TRUE,Alan,Steiner,Alan.Steiner,Adam Barr,Director of Project Management Team,Project Management,07232 141111,0141 222 2911 Ext 1111,Scotland,33 Nith Street,Glasgow,Scotland,,G12 1UR,GB,TRUE
+TRUE,DEVELOPERPACK,Chris.Norred,TRUE,Chris,Norred,Chris.Norred,Alan Steiner,Project Manager,Project Management,07532 362223,01923 367 8362 Ext 2223,Watford,67 Manor Road,Watford,England,,WD32 5WF,GB,TRUE
