@@ -1,5 +1,4 @@
-﻿#Download Microsoft Online Services Sign In Assistant for IT Proffessionals RTW x64
-#https://www.microsoft.com/en-us/download/details.aspx?id=41950
+﻿
 
 #https://supertekboy.com/2018/11/07/connect-msolservice-may-fail-when-mfa-is-enabled/
 
@@ -75,7 +74,7 @@ $sta = @($st)
             $DisplayName = $UserCSV.GivenName + ' ' + $UserCSV.Surname
     
   
-            $user = Get-AzureADUser -Filter "userPrincipalName eq '$UPN'"
+            $user = Get-AzureADUser -Filter "userPrincipalName eq '$UPN'" 
             if (!$user) {
                 Write-Information -MessageData:"Creating user details $DisplayName"
                 $user = New-AzureADUser  -UserPrincipalName $UPN `
@@ -97,6 +96,20 @@ $sta = @($st)
                     -PostalCode $UserCSV.PostCode `
                     -ShowInAddressList ([System.Convert]::ToBoolean($UserCSV.ShowInAddressList)) `
                     -UsageLocation $UserCSV.UsageLocation
+
+                $createduser = $false
+                do {
+                    #Gives time for the account to be created before the next step runs.
+                    Start-Sleep -Seconds 1
+                    try
+                    { 
+                        Get-MsolUser -UserPrincipalName $UPN  
+                        $createdUser = $true
+                    }
+                    catch{
+
+                    }
+                }while (!$createduser)
             }
             else {
                 Write-Information -MessageData:"Updating user details $DisplayName"
@@ -120,6 +133,8 @@ $sta = @($st)
                     -ShowInAddressList ([System.Convert]::ToBoolean($UserCSV.ShowInAddressList)) `
                     -UsageLocation $UserCSV.UsageLocation
             }
+
+            
 
             if ($UserCSV.MFAEnabled) {  
                 Write-Information -MessageData:"Enabling MFA for $DisplayName"
@@ -160,10 +175,10 @@ $sta = @($st)
                     Write-Information -MessageData:"There are $($remaining-1) licenses $($UserCSV.License) left"
                 }
             }
-            $ImageName = $DisplayName -replace '\.', ' '
+            $ImageName = $UserCSV.UserPrincipalName -replace '\.', ' '
             if (Test-Path -path:"$PSScriptRoot\UserImages\$ImageName.jpg") {
                 Write-Information -MessageData:"Setting UserPhoto for $DisplayName"
-                Set-AzureADUserThumbnailPhoto -ObjectId $user.ObjectId -FilePath "$PSScriptRoot\UserImages\$DisplayName.jpg"
+                Set-AzureADUserThumbnailPhoto -ObjectId $user.ObjectId -FilePath "$PSScriptRoot\UserImages\$ImageName.jpg"
             }
             else {
                 Write-Warning -Message:"Unable to find picture for $DisplayName"
