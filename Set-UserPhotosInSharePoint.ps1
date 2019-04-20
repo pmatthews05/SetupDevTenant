@@ -7,7 +7,7 @@ E.g Connect-PNPOnline -url:https://<tenant>-my.sharepoint.com -useweblogin
 
 .EXAMPLE
 
-.\Set-UserPhotosInSharePoint.ps1 -Path:'.\AzureADUser.csv'
+.\Set-UserPhotosInSharePoint.ps1 -Path:'.\data\AzureADUser.csv' -TenantDomain:'mytenant.onmicrosoft.com'
 #>
 
 param(

@@ -13,7 +13,7 @@ You will need to connect to MSO using Connect-MsolService
 
 .EXAMPLE
 
-.\Set-UserAccountOnline.ps1 -Path:'.\AzureADUser.csv' -tenantDomain:'mytenant.onmicrosoft.com' -tempPassword:'U$kd8*2BG'
+.\Set-UserAccountOnline.ps1 -Path:'.\data\AzureADUser.csv' -tenantDomain:'mytenant.onmicrosoft.com' -tempPassword:'U$kd8*2BG'
 #>
 
 param(

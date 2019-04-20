@@ -7,12 +7,13 @@ You will need to connect usingConnect-EXOPSSession -UserPrincipalName
 
 .EXAMPLE
 
-.\Set-UserPhotosInExchange.ps1 -Path:'.\AzureADUser.csv'
+.\Set-UserPhotosInExchange.ps1 -Path:'.\data\AzureADUser.csv' -TenantDomain:'mytenant.onmicrosoft.com'
 #>
 
 param(
     # The path to the CSV file
-    [Parameter(Mandatory)][string]$Path
+    [Parameter(Mandatory)][string]$Path,
+    [Parameter(Mandatory)][string]$TenantDomain
 )
 
 #Connect using Exchange Online Powershell
