@@ -48,3 +48,6 @@ Write-Information -MessageData:"$(Get-Date) Started populating photos the AD ten
             Write-Warning -Message:"Unable to find picture for $DisplayName"
         }
 })
+
+
+Write-Host "Finished uploading Data at $(Get-Date)"
