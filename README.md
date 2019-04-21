@@ -1,6 +1,13 @@
 # SetupDevTenant
 Scripts required to set up a dev tenant
 
+## What you cannot do with script
+- Create a Tenant App Catalog
+- Set Organization Details
+- Set Login Branding
+- Set Tenant Branding
+
+
 ### Set-UserAccountsOnline.ps1
 - Creates users from CSV
 - Assigns License
@@ -25,4 +32,5 @@ Scripts required to set up a dev tenant
 
 ### Set-SharePoint.ps1
 - Uses PNP
-- Create App Catalog
+- Set Tenant settings
+- Setup Public CDN
