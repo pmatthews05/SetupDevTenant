@@ -1,68 +1,74 @@
 
 #Have to create App Catalog Manually.
 
+
+$Parameters = Get-Content -Raw -Path $Path | ConvertFrom-Json
                 
 # Uses PNP
 # Set Tenant settings
 Set-PnPTenant -AllowDownloadingNonWebViewableFiles: "" `
     -AllowEditing: "" `
     -ApplyAppEnforcedRestrictionsToAdHocRecipients: "" `
-    -BccExternalSharingInvitations: "" `
-    -BccExternalSharingInvitationsList: "" `
+    -BccExternalSharingInvitations: $($Parameters.BccExternalSharingInvitations) `
+    -BccExternalSharingInvitationsList: $($Parameters.BccExternalSharingInvitationsList) `
     -CommentsOnSitePagesDisabled: "" `
     -ConditionalAccessPolicy: "" `
     -DefaultLinkPermission: "" `
     -DefaultSharingLinkType: "" `
     -DisallowInfectedFileDownload: "" `
-    -DisplayStartASiteOption: "" `
+    -DisplayStartASiteOption: $($Parameters.DisplayStartASiteOption) `
     -EmailAttestationReAuthDays: "" `
     -EmailAttestationRequired: "" `
-    -EnableGuestSignInAcceleration: "" `
-    -ExternalServicesEnabled:"" `
+    -EnableGuestSignInAcceleration: $($Parameters.EnableGuestSignInAcceleration) `
+    -ExternalServicesEnabled:$($Parameters.ExternalServicesEnabled) `
     -FileAnonymousLinkType:"" `
     -FilePickerExternalImageSearchEnabled: "" `
     -FolderAnonymousLinkType: "" `
-    -HideDefaultThemes: "" `
+    -HideDefaultThemes: $($Parameters.HideDefaultThemes) `
     -IPAddressAllowList: "" `
     -IPAddressEnforcement: "" `
     -IPAddressWACTokenLifetime: "" `
-    -LegacyAuthProtocolsEnabled: "" `
+    -LegacyAuthProtocolsEnabled: $($Parameters.LegacyAuthProtocolsEnabled) `
     -MaxCompatibilityLevel:"" `
     -MinCompatibilityLevel:"" `
-    -NoAccessRedirectUrl:"" `
+    -NoAccessRedirectUrl:$($Parameters.NoAccessRedirectUrl) `
     -NotificationsInOneDriveForBusinessEnabled: "" `
     -NotificationsInSharePointEnabled: "" `
     -NotifyOwnersWhenInvitationsAccepted: "" `
     -NotifyOwnersWhenItemsReshared: "" `
     -ODBAccessRequests: "" `
     -ODBMembersCanShare: "" `
-    -OfficeClientADALDisabled: "" `
+    -OfficeClientADALDisabled: $($Parameters.OfficeClientADALDisabled) `
     -OneDriveForGuestsEnabled: "" `
-    -OneDriveStorageQuota: "" `
+    -OneDriveStorageQuota: $($Parameters.OneDriveStorageQuota) `
     -OrphanedPersonalSitesRetentionPeriod: "" `
     -OwnerAnonymousNotification: "" `
     -PreventExternalUsersFromResharing: "" `
-    -ProvisionSharedWithEveryoneFolder: "" `
+    -ProvisionSharedWithEveryoneFolder: $($Parameters.ProvisionSharedWithEveryoneFolder) `
     -PublicCdnAllowedFileTypes: "" `
     -PublicCdnEnabled: "" `
-    -RequireAcceptingAccountMatchInvitedAccount: "" `
+    -RequireAcceptingAccountMatchInvitedAccount: $($Parameters.RequireAcceptingAccountMatchInvitedAccount) `
     -RequireAnonymousLinksExpireInDays: "" `
-    -SearchResolveExactEmailOrUPN: "" `
+    -SearchResolveExactEmailOrUPN: $($Parameters.SearchResolveExactEmailOrUPN) `
     -SharingAllowedDomainList: "" `
     -SharingBlockedDomainList: "" `
-    -SharingCapability:"" `
+    -SharingCapability:$($Parameters.SharingCapability) `
     -SharingDomainRestrictionMode: "" `
-    -ShowAllUsersClaim: "" `
-    -ShowEveryoneClaim: "" `
-    -ShowEveryoneExceptExternalUsersClaim: "" `
+    -ShowAllUsersClaim: $($Parameters.ShowAllUsersClaim) `
+    -ShowEveryoneClaim: $($Parameters.ShowEveryoneClaim) `
+    -ShowEveryoneExceptExternalUsersClaim: $($Parameters.ShowEveryoneExceptExternalUsersClaim) `
     -ShowPeoplePickerSuggestionsForGuestUsers: "" `
-    -SignInAccelerationDomain: "" `
+    -SignInAccelerationDomain: $($Parameters.SignInAccelerationDomain) `
     -SocialBarOnSitePagesDisabled: "" `
     -SpecialCharactersStateInFileFolderNames:"" `
-    -StartASiteFormUrl: "" `
+    -StartASiteFormUrl: $($Parameters.StartASiteFormUrl) `
     -UseFindPeopleInPeoplePicker: "" `
-    -UsePersistentCookiesForExplorerView: "" `
-    -UserVoiceForFeedbackEnabled: "" `
+    -UsePersistentCookiesForExplorerView: $($Parameters.UsePersistentCookiesForExplorerView) `
+    -UserVoiceForFeedbackEnabled: $($Parameters.UserVoiceForFeedbackEnabled) `
    
-
-# Setup Public CDN
+Set-PnPTenantCdnEnabled -CdnType Public -Enable:$true
+<#This sets 
+*/MASTERPAGE
+*/STYLE LIBRARY
+*/CLIENTSIDEASSETS
+#>
