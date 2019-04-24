@@ -6,63 +6,61 @@ $Parameters = Get-Content -Raw -Path $Path | ConvertFrom-Json
                 
 # Uses PNP
 # Set Tenant settings
-Set-PnPTenant -AllowDownloadingNonWebViewableFiles: "" `
-    -AllowEditing: "" `
-    -ApplyAppEnforcedRestrictionsToAdHocRecipients: "" `
+Set-PnPTenant -AllowDownloadingNonWebViewableFiles: $($Parameters.AllowDownloadingNonWebViewableFiles) `
+    -AllowEditing: $($Parameters.AllowEditing) `
+    -ApplyAppEnforcedRestrictionsToAdHocRecipients: $($Parameters.ApplyAppEnforcedRestrictionsToAdHocRecipients) `
     -BccExternalSharingInvitations: $($Parameters.BccExternalSharingInvitations) `
     -BccExternalSharingInvitationsList: $($Parameters.BccExternalSharingInvitationsList) `
-    -CommentsOnSitePagesDisabled: "" `
-    -ConditionalAccessPolicy: "" `
-    -DefaultLinkPermission: "" `
-    -DefaultSharingLinkType: "" `
-    -DisallowInfectedFileDownload: "" `
+    -CommentsOnSitePagesDisabled: $($Parameters.CommentsOnSitePagesDisabled) `
+    -ConditionalAccessPolicy: $($Parameters.ConditionalAccessPolicy) `
+    -DefaultLinkPermission: $($Parameters.DefaultLinkPermission) `
+    -DefaultSharingLinkType: $($Parameters.DefaultSharingLinkType) `
+    -DisallowInfectedFileDownload: $($Parameters.DisallowInfectedFileDownload) `
     -DisplayStartASiteOption: $($Parameters.DisplayStartASiteOption) `
-    -EmailAttestationReAuthDays: "" `
-    -EmailAttestationRequired: "" `
+    -EmailAttestationReAuthDays: $($Parameters.EmailAttestationReAuthDays) `
+    -EmailAttestationRequired: $($Parameters.EmailAttestationRequired) `
     -EnableGuestSignInAcceleration: $($Parameters.EnableGuestSignInAcceleration) `
-    -ExternalServicesEnabled:$($Parameters.ExternalServicesEnabled) `
-    -FileAnonymousLinkType:"" `
-    -FilePickerExternalImageSearchEnabled: "" `
-    -FolderAnonymousLinkType: "" `
+    -ExternalServicesEnabled: $($Parameters.ExternalServicesEnabled) `
+    -FileAnonymousLinkType: $($Parameters.FileAnonymousLinkType) `
+    -FilePickerExternalImageSearchEnabled: $($Parameters.FilePickerExternalImageSearchEnabled) `
+    -FolderAnonymousLinkType: $($Parameters.FolderAnonymousLinkType) `
     -HideDefaultThemes: $($Parameters.HideDefaultThemes) `
-    -IPAddressAllowList: "" `
-    -IPAddressEnforcement: "" `
-    -IPAddressWACTokenLifetime: "" `
+    -IPAddressAllowList: $($Parameters.IPAddressAllowList) `
+    -IPAddressEnforcement: $($Parameters.IPAddressEnforcement) `
+    -IPAddressWACTokenLifetime: $($Parameters.IPAddressWACTokenLifetime) `
     -LegacyAuthProtocolsEnabled: $($Parameters.LegacyAuthProtocolsEnabled) `
-    -MaxCompatibilityLevel:"" `
-    -MinCompatibilityLevel:"" `
     -NoAccessRedirectUrl:$($Parameters.NoAccessRedirectUrl) `
-    -NotificationsInOneDriveForBusinessEnabled: "" `
-    -NotificationsInSharePointEnabled: "" `
-    -NotifyOwnersWhenInvitationsAccepted: "" `
-    -NotifyOwnersWhenItemsReshared: "" `
-    -ODBAccessRequests: "" `
-    -ODBMembersCanShare: "" `
+    -NotificationsInOneDriveForBusinessEnabled: $($Parameters.NotificationsInOneDriveForBusinessEnabled) `
+    -NotificationsInSharePointEnabled: $($Parameters.NotificationsInSharePointEnabled) `
+    -NotifyOwnersWhenInvitationsAccepted: $($Parameters.NotifyOwnersWhenInvitationsAccepted) `
+    -NotifyOwnersWhenItemsReshared: $($Parameters.NotifyOwnersWhenItemsReshared) `
+    -ODBAccessRequests: $($Parameters.ODBAccessRequests) `
+    -ODBMembersCanShare: $($Parameters.ODBMembersCanShare) `
     -OfficeClientADALDisabled: $($Parameters.OfficeClientADALDisabled) `
-    -OneDriveForGuestsEnabled: "" `
+    -OneDriveForGuestsEnabled: $($Parameters.OneDriveForGuestsEnabled) `
     -OneDriveStorageQuota: $($Parameters.OneDriveStorageQuota) `
-    -OrphanedPersonalSitesRetentionPeriod: "" `
-    -OwnerAnonymousNotification: "" `
-    -PreventExternalUsersFromResharing: "" `
+    -OrphanedPersonalSitesRetentionPeriod: $($Parameters.OrphanedPersonalSitesRetentionPeriod) `
+    -OwnerAnonymousNotification: $($Parameters.OwnerAnonymousNotification) `
+    -PreventExternalUsersFromResharing: $($Parameters.PreventExternalUsersFromResharing) `
     -ProvisionSharedWithEveryoneFolder: $($Parameters.ProvisionSharedWithEveryoneFolder) `
-    -PublicCdnAllowedFileTypes: "" `
-    -PublicCdnEnabled: "" `
+    -PublicCdnAllowedFileTypes:  $($Parameters.PublicCdnAllowedFileTypes) `
+    -PublicCdnEnabled:  $($Parameters.PublicCdnEnabled) `
     -RequireAcceptingAccountMatchInvitedAccount: $($Parameters.RequireAcceptingAccountMatchInvitedAccount) `
-    -RequireAnonymousLinksExpireInDays: "" `
+    -RequireAnonymousLinksExpireInDays: $($Parameters.RequiredAnonymousLinksExpireInDays) `
     -SearchResolveExactEmailOrUPN: $($Parameters.SearchResolveExactEmailOrUPN) `
-    -SharingAllowedDomainList: "" `
-    -SharingBlockedDomainList: "" `
+    -SharingAllowedDomainList: $($Parameters.SharingAllowedDomainList) `
+    -SharingBlockedDomainList: $($Parameters.SharingBlockedDomainList) `
     -SharingCapability:$($Parameters.SharingCapability) `
-    -SharingDomainRestrictionMode: "" `
+    -SharingDomainRestrictionMode: $($Parameters.SharingDomainRestrictionMode) `
     -ShowAllUsersClaim: $($Parameters.ShowAllUsersClaim) `
     -ShowEveryoneClaim: $($Parameters.ShowEveryoneClaim) `
     -ShowEveryoneExceptExternalUsersClaim: $($Parameters.ShowEveryoneExceptExternalUsersClaim) `
-    -ShowPeoplePickerSuggestionsForGuestUsers: "" `
+    -ShowPeoplePickerSuggestionsForGuestUsers: $($Parameters.ShowPeoplePickerSuggestionsForGuestUsers) `
     -SignInAccelerationDomain: $($Parameters.SignInAccelerationDomain) `
-    -SocialBarOnSitePagesDisabled: "" `
-    -SpecialCharactersStateInFileFolderNames:"" `
+    -SocialBarOnSitePagesDisabled: $($Parameters.SocialBarOnSitePagesDisabled) `
+    -SpecialCharactersStateInFileFolderNames: $($Parameters.SpecialCharactersStateInFileFolderNames) `
     -StartASiteFormUrl: $($Parameters.StartASiteFormUrl) `
-    -UseFindPeopleInPeoplePicker: "" `
+    -UseFindPeopleInPeoplePicker: $($Parameters.UseFindPeopleInPeoplePicker) `
     -UsePersistentCookiesForExplorerView: $($Parameters.UsePersistentCookiesForExplorerView) `
     -UserVoiceForFeedbackEnabled: $($Parameters.UserVoiceForFeedbackEnabled) `
    
