@@ -41,7 +41,7 @@ $ErrorActionPreference = 'stop'
 $InformationPreference = 'continue'
 
 
-Write-Information -MessageData:"$(Get-Date) Started populating the AD tenant for $TenantDomain."
+Write-Host -MessageData:"$(Get-Date) Started populating the AD tenant for $TenantDomain."
 
 #Setup temp password
 $dummyPasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile

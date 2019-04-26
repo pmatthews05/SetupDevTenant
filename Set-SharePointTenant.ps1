@@ -1,8 +1,23 @@
+<#
+.SYNOPSIS
+Update Tenant Parameters, and enabling Public CDN
+
+You will need to connect to https://<tenant>-admin.sharepoint.com first using Connect-PNPOnline
+
+.EXAMPLE
+
+.\Set-SharePointTenant.ps1 -SettingsPath:'.\Settings\SPTenantSettings.json'
+#>
+
+param(
+    # The path to the Json file
+    [Parameter(Mandatory)][string]$SettingsPath
+)
 
 #Have to create App Catalog Manually.
+Write-Host -MessageData:"Started setting tenant settings at $(Get-Date)"
 
-
-$Parameters = Get-Content -Raw -Path $Path | ConvertFrom-Json
+$Parameters = Get-Content -Raw -Path $SettingsPath | ConvertFrom-Json
                 
 # Uses PNP
 # Set Tenant settings
@@ -63,10 +78,13 @@ Set-PnPTenant -AllowDownloadingNonWebViewableFiles: $($Parameters.AllowDownloadi
     -UseFindPeopleInPeoplePicker: $($Parameters.UseFindPeopleInPeoplePicker) `
     -UsePersistentCookiesForExplorerView: $($Parameters.UsePersistentCookiesForExplorerView) `
     -UserVoiceForFeedbackEnabled: $($Parameters.UserVoiceForFeedbackEnabled) `
-   
-Set-PnPTenantCdnEnabled -CdnType Public -Enable:$true
+  
 <#This sets 
 */MASTERPAGE
 */STYLE LIBRARY
 */CLIENTSIDEASSETS
 #>
+Write-Information -MessageData "Setting Public CDN to enabled = $($Parameters.PublicCdnEnabled)"
+Set-PnPTenantCdnEnabled -CdnType Public -Enable:$Parameters.PublicCdnEnabled
+
+Write-Host "Finished setting tenant settings at $(Get-Date)"
