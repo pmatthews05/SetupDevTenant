@@ -30,7 +30,7 @@ Scripts required to set up a dev tenant
 - Creates a Group and assign users
 - Enable auditing
 
-### Set-SharePoint.ps1
+### Set-SharePointTenant.ps1
 - Uses PNP
 - Set Tenant settings
 - Setup Public CDN
