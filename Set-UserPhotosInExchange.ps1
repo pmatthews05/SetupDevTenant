@@ -3,11 +3,11 @@
 Add User photos to Exchange, this will allow photos to appear in DELVE and SharePoint.
 
 You will need to run this from Powershell Exchange.
-You will need to connect usingConnect-EXOPSSession -UserPrincipalName
+You will need to connect using Connect-EXOPSSession -UserPrincipalName
 
 .EXAMPLE
 
-.\Set-UserPhotosInExchange.ps1 -Path:'.\data\AzureADUser.csv' -TenantDomain:'mytenant.onmicrosoft.com'
+.\Set-UserPhotosInExchange.ps1 -Path:'.\data\AzureADUsers.csv' -TenantDomain:'mytenant.onmicrosoft.com'
 #>
 
 param(

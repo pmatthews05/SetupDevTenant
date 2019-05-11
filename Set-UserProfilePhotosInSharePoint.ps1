@@ -3,11 +3,11 @@
 Add User photos to SharePoint UserProfile.
 
 You will need to connect to your tenant using PNP PowerShell
-E.g Connect-PNPOnline -url:https://<tenant>.sharepoint.com -useweblogin 
+E.g Connect-PNPOnline -url:https://<tenant>-admin.sharepoint.com -useweblogin 
 
 .EXAMPLE
 
-.\Set-UserProfilePhotosInSharePoint.ps1 -Path:'.\data\AzureADUser.csv' -TenantDomain:'mytenant.onmicrosoft.com'
+.\Set-UserProfilePhotosInSharePoint.ps1 -Path:'.\data\AzureADUsers.csv' -TenantDomain:'mytenant.onmicrosoft.com'
 #>
 
 param(
@@ -18,7 +18,7 @@ param(
 
 $ProfilePathFolder = "user photos/profile pictures"
 
-Write-Information -MessageData:"$(Get-Date) Started populating user Prifle photos the AD tenant for $TenantDomain."
+Write-Information -MessageData:"$(Get-Date) Started populating user Profile photos the AD tenant for $TenantDomain."
 
 $tenantName = $TenantDomain.Split('\.')[0] 
 $mysite = "https://{0}-my.sharepoint.com" -f $tenantName 
