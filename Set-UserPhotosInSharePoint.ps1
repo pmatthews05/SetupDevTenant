@@ -138,7 +138,7 @@ Function Resize-Image() {
 }
 
 
-
+$InformationPreference = "Continue";
 $ProfilePathFolder = "user photos\profile pictures"
 $ResizedImagePath = "\UserImages\Resized"
 Write-Information -MessageData:"$(Get-Date) Started uploading User Profile photos the AD tenant for $TenantDomain."

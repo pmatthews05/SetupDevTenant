@@ -15,7 +15,7 @@ param(
     [Parameter(Mandatory)][string]$Path,
     [Parameter(Mandatory)][string]$TenantDomain    
 )
-
+$InformationPreference = "Continue";
 $ProfilePathFolder = "user photos/profile pictures"
 
 Write-Information -MessageData:"$(Get-Date) Started populating user Profile photos the AD tenant for $TenantDomain."

@@ -16,7 +16,7 @@ param(
 
 #Have to create App Catalog Manually.
 Write-Host -MessageData:"Started setting tenant settings at $(Get-Date)"
-
+$InformationPreference = "Continue";
 $Parameters = Get-Content -Raw -Path $SettingsPath | ConvertFrom-Json
                 
 # Uses PNP
