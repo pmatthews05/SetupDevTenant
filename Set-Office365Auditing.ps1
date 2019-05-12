@@ -5,7 +5,7 @@ Turns on the Audit logs, and assign people to view them.
 
 You will need to run this from Powershell Exchange.
 You will need to connect usingConnect-EXOPSSession -UserPrincipalName
-
+You will also need to run Enable-OrganizationCustomization first.
 .EXAMPLE
 
 .\Set-Office365Auditing.ps1 -Path:'.\data\ViewAuditUsers.csv' -TenantDomain:'<tenant>.onmicrosoft.com'
@@ -38,8 +38,5 @@ New-RoleGroup -Name "View Audits Only" -Roles "View-Only Audit Logs" -Descriptio
         Write-Information -MessageData:"$($UserCsv.UserPrincipalName) Added" 
     })
 #Turn on Auditing
-Enable-OrganizationCustomization
-
-#Need to wait 60 minutes before can run this????
 Write-Information -MessageData:"Turning on Auditing"
 Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true
