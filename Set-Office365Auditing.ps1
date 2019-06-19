@@ -23,7 +23,7 @@ param(
 $InformationPreference = 'continue'
 
 
-Write-Information -MessageData:"$(Get-Date) Started populating photos the AD tenant for $TenantDomain."
+Write-Information -MessageData:"$(Get-Date) Started Enabling Auditing for $TenantDomain."
 
 Write-Information -MessageData:"Creating Group View Audits Only";
 New-RoleGroup -Name "View Audits Only" -Roles "View-Only Audit Logs" -Description "Allow the users read only to the Audit Logs" -ErrorAction SilentlyContinue
