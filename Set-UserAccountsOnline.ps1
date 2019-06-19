@@ -136,7 +136,7 @@ $sta = @($st)
 
             
 
-            if ($UserCSV.MFAEnabled) {  
+            if ([System.Convert]::ToBoolean($UserCSV.MFAEnabled)) {  
                 Write-Information -MessageData:"Enabling MFA for $DisplayName"
                 Set-MsolUser -UserPrincipalName $UPN -StrongAuthenticationRequirements $sta
             }
