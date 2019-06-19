@@ -1,11 +1,11 @@
 
 <#
 .SYNOPSIS
-Add User photos to Exchange, this will allow photos to appear in DELVE and SharePoint.
+Turns on the Audit logs, and assign people to view them.
 
 You will need to run this from Powershell Exchange.
 You will need to connect usingConnect-EXOPSSession -UserPrincipalName
-
+You will also need to run Enable-OrganizationCustomization first.
 .EXAMPLE
 
 .\Set-Office365Auditing.ps1 -Path:'.\data\ViewAuditUsers.csv' -TenantDomain:'<tenant>.onmicrosoft.com'

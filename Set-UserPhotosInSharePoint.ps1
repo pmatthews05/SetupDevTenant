@@ -7,7 +7,7 @@ E.g Connect-PNPOnline -url:https://<tenant>-my.sharepoint.com -useweblogin
 
 .EXAMPLE
 
-.\Set-UserPhotosInSharePoint.ps1 -Path:'.\data\AzureADUser.csv' -TenantDomain:'mytenant.onmicrosoft.com'
+.\Set-UserPhotosInSharePoint.ps1 -Path:'.\data\AzureADUsers.csv' -TenantDomain:'mytenant.onmicrosoft.com'
 #>
 
 param(
@@ -138,7 +138,7 @@ Function Resize-Image() {
 }
 
 
-
+$InformationPreference = "Continue";
 $ProfilePathFolder = "user photos\profile pictures"
 $ResizedImagePath = "\UserImages\Resized"
 Write-Information -MessageData:"$(Get-Date) Started uploading User Profile photos the AD tenant for $TenantDomain."

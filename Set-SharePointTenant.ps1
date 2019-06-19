@@ -16,7 +16,7 @@ param(
 
 #Have to create App Catalog Manually.
 Write-Host -MessageData:"Started setting tenant settings at $(Get-Date)"
-
+$InformationPreference = "Continue";
 $Parameters = Get-Content -Raw -Path $SettingsPath | ConvertFrom-Json
                 
 # Uses PNP
@@ -79,14 +79,14 @@ if ($Parameters.EnableGuestSignInAcceleration) {
 Set-PnPTenant -OneDriveForGuestsEnabled: $($Parameters.OneDriveForGuestsEnabled) 
 Set-PnPTenant -OrphanedPersonalSitesRetentionPeriod: $($Parameters.OrphanedPersonalSitesRetentionPeriod) 
 
-# Needs Itune and Azure Directory Premium Subscriptions
+# Needs Intune and Azure Directory Premium Subscriptions
 #TODO: Work out how to check if licenses are available before running.
 #Set-PnPTenant -ConditionalAccessPolicy: $($Parameters.ConditionalAccessPolicy) 
 #Set-PnPTenant -AllowDownloadingNonWebViewableFiles: $($Parameters.AllowDownloadingNonWebViewableFiles) 
 #Set-PnPTenant -AllowEditing: $($Parameters.AllowEditing) `
   
   
-<#This sets 
+<#Ensure this is within PublicCdnOrigins
 */MASTERPAGE
 */STYLE LIBRARY
 */CLIENTSIDEASSETS
